@@ -3,12 +3,21 @@
 import fs from 'fs';
 import path from 'path';
 
-// Get the command line arguments
-const args = process.argv.slice(2);
-const targetArg = args.find(arg => arg.startsWith('--target='));
-const targetPath = targetArg ? targetArg.split('=')[1] : './';
+export function addBuildInfo(data: { version: string, date: string }) {
 
-function emitVersionJson(packageJsonPath: string, outputDir: string): void {
+    const versionDiv = document.createElement('div');
+    versionDiv.textContent = `Build Version: ${data.version} - ${data.date}`;
+    versionDiv.style.position = 'fixed';
+    versionDiv.style.fontSize = '10px';
+    versionDiv.style.bottom = '0';
+    versionDiv.style.left = '0';
+    versionDiv.style.zIndex = '1000';
+    versionDiv.style.padding = '2px 10px';
+    versionDiv.style.fontFamily = 'Courier New, monospace';
+    document.body.appendChild(versionDiv);
+}
+
+export function emitVersionJson(packageJsonPath: string, outputDir: string): void {
 
     console.log("Generating version.json file...")
     // Read the package.json file
@@ -31,5 +40,14 @@ function emitVersionJson(packageJsonPath: string, outputDir: string): void {
     console.log("version.json file generated.")
 }
 
-console.log("Will output version.json file to: " + targetPath);
-emitVersionJson('./package.json', targetPath);
+//avoid running the script if it is imported
+if (require.main === module) {
+
+    // Get the command line arguments
+    const args = process.argv.slice(2);
+    const targetArg = args.find(arg => arg.startsWith('--target='));
+    const targetPath = targetArg ? targetArg.split('=')[1] : './';
+
+    console.log("Will output version.json file to: " + targetPath);
+    emitVersionJson('./package.json', targetPath);
+  }
