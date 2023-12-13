@@ -11,6 +11,7 @@ src/
 
 # Ignore Git and other metadata files
 .git/
+.github/
 .gitignore
 .npmignore
 .travis.yml
@@ -18,3 +19,4 @@ src/
 .prettierrc.js
 tsconfig.json
 README.md
+version.json
