@@ -1,6 +1,6 @@
 {
   "name": "@natewilcox/version-meta",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Build utility to convert package.json and meta data into version.json for use in front end.",
   "author": "Nathan Wilcox",
   "license": "GPL-3.0",
