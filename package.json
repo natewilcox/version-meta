@@ -13,8 +13,8 @@
     "meta",
     "build"
   ],
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": {
     "version-meta": "./dist/index.js"
   },
