@@ -4,17 +4,21 @@ import fs from 'fs';
 import path from 'path';
 
 export function addBuildInfo(data: { version: string, date: string }) {
-
     const versionDiv = document.createElement('div');
     versionDiv.textContent = `Build Version: ${data.version} - ${data.date}`;
-    versionDiv.style.position = 'fixed';
+    versionDiv.style.position = 'absolute';
     versionDiv.style.fontSize = '10px';
     versionDiv.style.bottom = '0';
     versionDiv.style.left = '0';
     versionDiv.style.zIndex = '1000';
     versionDiv.style.padding = '2px 10px';
     versionDiv.style.fontFamily = 'Courier New, monospace';
-    document.body.appendChild(versionDiv);
+
+    const canvas = document.querySelector('canvas');
+    if (canvas && canvas.parentElement) {
+        canvas.parentElement.style.position = 'relative';
+        canvas.parentElement.appendChild(versionDiv);
+    }
 }
 
 export function emitVersionJson(packageJsonPath: string, outputDir: string): void {
