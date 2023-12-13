@@ -3,6 +3,11 @@
 import fs from 'fs';
 import path from 'path';
 
+// Get the command line arguments
+const args = process.argv.slice(2);
+const targetArg = args.find(arg => arg.startsWith('--target='));
+const targetPath = targetArg ? targetArg.split('=')[1] : './';
+
 function emitVersionJson(packageJsonPath: string, outputDir: string): void {
 
     console.log("Generating version.json file...")
@@ -26,4 +31,5 @@ function emitVersionJson(packageJsonPath: string, outputDir: string): void {
     console.log("version.json file generated.")
 }
 
-emitVersionJson('./package.json', './');
+console.log("Will output version.json file to: " + targetPath);
+emitVersionJson('./package.json', targetPath);
