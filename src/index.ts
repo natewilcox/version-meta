@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-function emitVersionJson(packageJsonPath: string): void {
+function emitVersionJson(packageJsonPath: string, outputDir: string): void {
   // Read the package.json file
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
@@ -18,7 +18,7 @@ function emitVersionJson(packageJsonPath: string): void {
   const versionJsonString = JSON.stringify(versionJson, null, 2);
 
   // Write the JSON string to a new file
-  fs.writeFileSync(path.join(path.dirname(packageJsonPath), 'version.json'), versionJsonString);
+  fs.writeFileSync(path.join(outputDir, 'version.json'), versionJsonString);
 }
 
-emitVersionJson('./package.json');
+emitVersionJson('./package.json', './src');

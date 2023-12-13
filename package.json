@@ -16,7 +16,10 @@
   ],
   "main": "index.js",
   "types": "index.d.ts",
-  
+
+  "bin": {
+    "version-meta": "./dist/index.js"
+  },
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "tsc"
