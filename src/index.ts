@@ -3,7 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 
-export function addBuildInfo(data: { version: string, date: string }) {
+export function addBuildInfo(data: { version: string, date: string }, element?: HTMLElement) {
     const versionDiv = document.createElement('div');
     versionDiv.textContent = `Build Version: ${data.version} - ${data.date}`;
     versionDiv.style.position = 'absolute';
@@ -14,10 +14,12 @@ export function addBuildInfo(data: { version: string, date: string }) {
     versionDiv.style.padding = '2px 10px';
     versionDiv.style.fontFamily = 'Courier New, monospace';
 
-    const canvas = document.querySelector('canvas');
-    if (canvas && canvas.parentElement) {
-        canvas.parentElement.style.position = 'relative';
-        canvas.parentElement.appendChild(versionDiv);
+    if (element) {
+        element.style.position = 'relative';
+        element.appendChild(versionDiv);
+    } else {
+        versionDiv.style.position = 'fixed';
+        document.body.appendChild(versionDiv);
     }
 }
 
