@@ -3,24 +3,19 @@
 import fs from 'fs';
 import path from 'path';
 
-export function addBuildInfo(data: { version: string, date: string }, element?: HTMLElement) {
+export function addBuildInfo(data: { version: string, date: string }) {
+
     const versionDiv = document.createElement('div');
-    versionDiv.textContent = `Build Version: ${data.version} - ${data.date}`;
+    versionDiv.textContent = `Version: ${data.version} - ${data.date}`;
     versionDiv.style.position = 'absolute';
     versionDiv.style.fontSize = '10px';
     versionDiv.style.bottom = '0';
     versionDiv.style.left = '0';
     versionDiv.style.zIndex = '1000';
-    versionDiv.style.padding = '2px 10px';
+    versionDiv.style.padding = '2px 4px';
     versionDiv.style.fontFamily = 'Courier New, monospace';
-
-    if (element) {
-        element.style.position = 'relative';
-        element.appendChild(versionDiv);
-    } else {
-        versionDiv.style.position = 'fixed';
-        document.body.appendChild(versionDiv);
-    }
+    versionDiv.style.position = 'fixed';
+    document.body.appendChild(versionDiv);
 }
 
 export function emitVersionJson(packageJsonPath: string, outputDir: string): void {
