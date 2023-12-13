@@ -2,23 +2,26 @@ import fs from 'fs';
 import path from 'path';
 
 function emitVersionJson(packageJsonPath: string, outputDir: string): void {
-  // Read the package.json file
-  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
-  // Extract the version
-  const { version } = packageJson;
+    console.log("Generating version.json file...")
+    // Read the package.json file
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
-  // Create a new object with the current date and the version
-  const versionJson = {
-    date: new Date().toISOString(),
-    version,
-  };
+    // Extract the version
+    const { version } = packageJson;
 
-  // Convert the object to a JSON string
-  const versionJsonString = JSON.stringify(versionJson, null, 2);
+    // Create a new object with the current date and the version
+    const versionJson = {
+        date: new Date().toISOString(),
+        version,
+    };
 
-  // Write the JSON string to a new file
-  fs.writeFileSync(path.join(outputDir, 'version.json'), versionJsonString);
+    // Convert the object to a JSON string
+    const versionJsonString = JSON.stringify(versionJson, null, 2);
+
+    // Write the JSON string to a new file
+    fs.writeFileSync(path.join(outputDir, 'version.json'), versionJsonString);
+    console.log("version.json file generated.")
 }
 
-emitVersionJson('./package.json', './src');
+emitVersionJson('./package.json', './');
