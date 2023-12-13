@@ -1,0 +1,29 @@
+{
+  "name": "@natewilcox/version-meta",
+  "version": "0.0.1",
+  "description": "Build utility to convert package.json and meta data into version.json for use in front end.",
+
+  "author": "Nathan Wilcox",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/natewilcox/version-meta.git"
+  },
+  "keywords": [
+    "version",
+    "meta",
+    "build"
+  ],
+  "main": "index.js",
+  "types": "index.d.ts",
+  
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "tsc"
+  },
+
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

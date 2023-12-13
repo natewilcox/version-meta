@@ -1,0 +1,20 @@
+# Ignore all test files
+test/
+tests/
+__tests__/
+
+# Ignore documentation
+docs/
+
+# Ignore TypeScript source files
+src/
+
+# Ignore Git and other metadata files
+.git/
+.gitignore
+.npmignore
+.travis.yml
+.eslintrc.js
+.prettierrc.js
+tsconfig.json
+README.md
