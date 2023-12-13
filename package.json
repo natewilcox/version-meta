@@ -1,6 +1,6 @@
 {
   "name": "@natewilcox/version-meta",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Build utility to convert package.json and meta data into version.json for use in front end.",
   "author": "Nathan Wilcox",
   "license": "GPL-3.0",
@@ -15,7 +15,6 @@
   ],
   "main": "index.js",
   "types": "index.d.ts",
-
   "bin": {
     "version-meta": "./dist/index.js"
   },
